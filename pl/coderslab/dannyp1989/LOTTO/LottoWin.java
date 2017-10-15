@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-class lottoWin {
+class LottoWin {
 
 	public static void main(String[] args) {
 		int counter = 1;

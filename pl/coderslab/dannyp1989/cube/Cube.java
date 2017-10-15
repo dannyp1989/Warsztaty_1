@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-class cube {
-
+class Cube {
 	public static void main(String[] args) {
+		System.out.println("Test");
 		Scanner scan = new Scanner(System.in);
 		cubeThrow();
 		while ( true) {
@@ -17,7 +17,7 @@ class cube {
 			}else if (yesNo.equalsIgnoreCase("n")) {
 				break;
 			}else {
-				
+
 			}
 		}
 
@@ -123,13 +123,13 @@ class cube {
 			}else {
 				System.out.println("Coś nie tak z zapisem rodzaju rzutu. Skup się." 
 						+ "\nTo Twój kod: " + throwType + ". Pasuje do wzoru: xDy+z?");
-				}
 			}
+		}
 
 		for (int i = 0; i < throwCount ; i++) {
-				cubeGeneratorValue += generator.nextInt(cube) + 1;
-				System.out.println("Wynik rzutu kością " + (i + 1) + " D" + cube + " to = " + cubeGeneratorValue);
-			}
+			cubeGeneratorValue += generator.nextInt(cube) + 1;
+			System.out.println("Wynik rzutu kością " + (i + 1) + " D" + cube + " to = " + cubeGeneratorValue);
+		}
 		if ( throwType.indexOf('-') == -1) {
 			cubeThrow = cubeGeneratorValue + addedValue;
 		}else {

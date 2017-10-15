@@ -19,7 +19,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-class webSearch {
+class WebSearch {
 
 	public static void main(String[] args) {
 		String site = "https://www.chelseafc.com/";

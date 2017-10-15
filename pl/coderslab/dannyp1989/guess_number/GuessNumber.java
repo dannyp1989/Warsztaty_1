@@ -3,7 +3,7 @@ package pl.coderslab.dannyp1989.guess_number;
 import java.util.Random;
 import java.util.Scanner;
 
-class guessNumber {
+class GuessNumber {
 	public static void main(String[] args) {
 		guessNumber();
 	}

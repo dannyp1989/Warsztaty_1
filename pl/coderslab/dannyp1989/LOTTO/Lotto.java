@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-class lotto {
+class Lotto {
 
 	public static void main(String[] args) {
 		lotto();

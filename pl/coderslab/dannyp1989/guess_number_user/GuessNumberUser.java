@@ -2,7 +2,7 @@ package pl.coderslab.dannyp1989.guess_number_user;
 
 import java.util.Scanner;
 
-class guessNumberUser {
+class GuessNumberUser {
 
 	public static void main(String[] args) {
 		guessNumberUserVersion();
