@@ -42,7 +42,6 @@ class webSearch {
 				StringTokenizer tok = new StringTokenizer(elem.text(), " '\"");
 				while ( tok.hasMoreTokens()) {
 					String tokX = tok.nextToken();
-//					tokX.replaceAll("[^a-zA-Z]", "");
 					String[] tokXs = tokX.split("[^a-zA-Z]");
 					tokX = String.join("", tokXs);
 					if (tokX.length() > 3) {
@@ -55,7 +54,6 @@ class webSearch {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// wczytanie stworzonego pliku
 		Path path = Paths.get(fileName + ".txt");
 		List<String> listOfWords = new ArrayList<String>();
 		
@@ -81,14 +79,10 @@ class webSearch {
 			}
 				
 		}
-		//test
 		int[] newWords = new int[iOfNewWords.size()];
 		for ( int i = 0; i < iOfNewWords.size(); i++) {
 			newWords[i] = iOfNewWords.get(i);
 		}
-		System.out.println(Arrays.toString(newWords));
-		//test koniec
-		
 		
 		int[][] sortowanie = new int[newWords.length][2];
 		for ( int i = 0 ; i < newWords.length ; i++) {
@@ -105,19 +99,7 @@ class webSearch {
 			}
 			
 		}
-		//wydruk tablicy dwuwymiarowej
-		for (int i = 0 ; i < sortowanie.length ; i++) {
-			for (int j = 0; j < sortowanie[i].length ; j++) {
-				if ( j== 0) {
-				System.out.print(arrayOfWords[sortowanie[i][j]] + " ");	
-				} else {
-					System.out.print(sortowanie[i][j]);
-				}
-			}
-			System.out.println();
-		}
-		//koniec wydruku
-		//sortowanie
+		
 		int count = 1;
 		while ( count < sortowanie.length) {
 			for ( int i = 0 ; i < sortowanie.length -1 ;i++) {
@@ -135,20 +117,19 @@ class webSearch {
 			count++;
 		}
 
-		//koniec sortowania
-		System.out.println("Wydruk 2");
-		//wydruk tablicy dwuwymiarowej
-		for (int i = 0 ; i < sortowanie.length ; i++) {
-			for (int j = 0; j < sortowanie[i].length ; j++) {
-				if ( j== 0) {
-				System.out.print(arrayOfWords[sortowanie[i][j]] + " ");	
-				} else {
-					System.out.print(sortowanie[i][j]);
-				}
-			}
-			System.out.println();
-		}
-		//koniec wydruku
+//		//wydruk tablicy dwuwymiarowej
+//		for (int i = 0 ; i < sortowanie.length ; i++) {
+//			for (int j = 0; j < sortowanie[i].length ; j++) {
+//				if ( j== 0) {
+//				System.out.print(arrayOfWords[sortowanie[i][j]] + " ");	
+//				} else {
+//					System.out.print(sortowanie[i][j]);
+//				}
+//			}
+//			System.out.println();
+//		}
+//		//koniec wydruku
+		
 		PrintWriter out2 = null;
 		try {
 			out2 = new PrintWriter(fileName + "_most_popular_words.txt");
@@ -158,24 +139,8 @@ class webSearch {
 		for ( int i = 0; i < 3 ; i++) {
 			out2.append(arrayOfWords[sortowanie[i][0]] + " " + sortowanie [i][1] + "\n");
 		}
-//		
-//		for ( int i = 0 ; i < newWords.length ; i++) {
-//			if ( i != newWords.length - 1) {
-//				out2.append("\"" + arrayOfWords[newWords[i]] + "\", liczba w nagłowkach: ").append(newWords[i+1] - newWords[i] + "\n");
-//			} else
-//				out2.append("\"" + arrayOfWords[newWords[i]] + "\", liczba w nagłowkach: ").append(arrayOfWords.length - newWords[i] + "\n");
-//		}
+
 		out2.close();
 	}
 
 }
-//Connection connect = Jsoup.connect("http://www.onet.pl/");
-//try {
-//    Document document = connect.get();
-//    Elements links = document.select("span.title");
-//    for (Element elem : links) {
-//        System.out.println(elem.text());
-//    }
-//} catch (IOException e) {
-//    e.printStackTrace();
-//}

@@ -25,12 +25,12 @@ class cube {
 	static int cubeThrow () {
 		Scanner scan = new Scanner(System.in);
 		Random generator = new Random();
-		int cubeThrow = 0;
 		String throwType = "";
+		int cubeThrow = 0;
 		int throwCount = 1;
 		int cube;
 		int addedValue = 0;
-		int cubeGeneratorValue;
+		int cubeGeneratorValue = 0;
 
 		cubeThrowRules();
 		while (true) {
@@ -42,17 +42,22 @@ class cube {
 			}
 			StringTokenizer tok = new StringTokenizer(throwType, "D+-");
 			if (tok.countTokens() == 1) {
-				try {
-					cube = Integer.parseInt(tok.nextToken());
-					if (cube == 3 || cube == 4 || cube == 6 || cube == 8 || 
-							cube == 10 || cube == 12 || cube == 20 || cube == 100) {
-						break;
-					} else {
-						System.out.println("Żle podawa wartość kostki. Może jeszcze raz zasady:");
-						cubeThrowRules();
+				if ( throwType.charAt('0') == 'D') {
+					try {
+						cube = Integer.parseInt(tok.nextToken());
+						if (cube == 3 || cube == 4 || cube == 6 || cube == 8 || 
+								cube == 10 || cube == 12 || cube == 20 || cube == 100) {
+							break;
+						} else {
+							System.out.println("Żle podawa wartość kostki. Może jeszcze raz zasady:");
+							cubeThrowRules();
+						}
+					} catch (NumberFormatException e) {
+						System.out.println("Rodzaj kostki nie jest wartością liczbową");
 					}
-				} catch (NumberFormatException e) {
-					System.out.println("Rodzaj kostki nie jest wartością liczbową");
+				}else {
+					System.out.println("Żle podawa wartość kostki. Może jeszcze raz zasady:");
+					cubeThrowRules();
 				}
 			}else if (tok.countTokens() == 2) {	
 				if ( (throwType.indexOf('+') != -1 || throwType.indexOf('-') != -1 ) && throwType.charAt(0) == 'D') {
@@ -121,17 +126,18 @@ class cube {
 				}
 			}
 
-		
-		cubeGeneratorValue = generator.nextInt(cube) + 1;
+		for (int i = 0; i < throwCount ; i++) {
+				cubeGeneratorValue += generator.nextInt(cube) + 1;
+				System.out.println("Wynik rzutu kością " + (i + 1) + " D" + cube + " to = " + cubeGeneratorValue);
+			}
 		if ( throwType.indexOf('-') == -1) {
-			cubeThrow = throwCount * cubeGeneratorValue + addedValue;
+			cubeThrow = cubeGeneratorValue + addedValue;
 		}else {
-			cubeThrow = throwCount * cubeGeneratorValue - addedValue;
+			cubeThrow = cubeGeneratorValue - addedValue;
 			if ( cubeThrow < 0 ) {
 				cubeThrow = 0;
 			}
 		}
-		System.out.println("Wynik rzutu kością D" + cube + " to = " + cubeGeneratorValue);
 		System.out.println("Całkowity wynik: " + throwType + " to = " + cubeThrow);
 		return cubeThrow;
 	}
